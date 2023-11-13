@@ -5,6 +5,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends apt-utils \
     && apt-get install -y gnupg2 \
+    && apt-get -y install python-setuptools \
     && apt-get upgrade -y
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138     \
@@ -13,7 +14,8 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 64
 RUN apt update \
     && apt install libseccomp2 -t buster-backports
  
-
+RUN  pip install --upgrade pip \
+    && pip install ez_setup
 
 # Build dummy packages to skip installing them and their dependencies
 RUN apt-get update \
