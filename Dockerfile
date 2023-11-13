@@ -25,6 +25,8 @@ RUN apt-get update \
 
 FROM python:3.11-slim-buster
 
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Copy dummy packages
 COPY --from=builder /*.deb /
 
