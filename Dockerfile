@@ -54,8 +54,9 @@ RUN dpkg -i /libgl1-mesa-dri.deb \
     && chown -R flaresolverr:flaresolverr .
 
 # Install Python dependencies
-RUN pwd
 COPY requirements.txt .
+
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt \
     # Remove temporary files
     && rm -rf /root/.cache
