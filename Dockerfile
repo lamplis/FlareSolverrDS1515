@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye as builder
+FROM python:3.11-slim-buster as builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -23,7 +23,7 @@ RUN apt-get update \
     && equivs-build adwaita-icon-theme \
     && mv adwaita-icon-theme_*.deb /adwaita-icon-theme.deb
 
-FROM python:3.11-slim-bullseye
+FROM python:3.11-slim-buster
 
 # Copy dummy packages
 COPY --from=builder /*.deb /
