@@ -2,11 +2,12 @@ FROM python:3.11-slim-buster as builder
 
 ARG DEBIAN_FRONTEND=noninteractive
 
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138      && echo 'deb http://httpredir.debian.org/debian buster-backports main contrib non-free' | tee -a /etc/apt/sources.list.d/debian-backports.list
+
 RUN apt-get update \
     && apt-get install -y gnupg2 
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138      && echo 'deb http://httpredir.debian.org/debian buster-backports main contrib non-free' | tee -a /etc/apt/sources.list.d/debian-backports.list       \
-    && apt update \
+RUN apt update \
     && apt install libseccomp2 -t buster-backports
 
 RUN apt-get install -y --no-install-recommends apt-utils \
