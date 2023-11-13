@@ -10,6 +10,13 @@
 
 FlareSolverr is a proxy server to bypass Cloudflare and DDoS-GUARD protection.
 
+## Docker Build
+
+docker build . --network=host -t flaresolverrds1515 -f ./Dockerfile
+docker tag flaresolverrds1515:latest
+
+docker-compose up -d
+
 ## How it works
 
 FlareSolverr starts a proxy server, and it waits for user requests in an idle state using few resources.
