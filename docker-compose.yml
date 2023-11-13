@@ -4,7 +4,7 @@ services:
   flaresolverr:
     # DockerHub mirror flaresolverr/flaresolverr:latest
     image: flaresolverrds1515:latest
-    container_name: flaresolverr
+    container_name: flaresolverrds1515
     network_mode: host
     environment:
       - LOG_LEVEL=${LOG_LEVEL:-info}
